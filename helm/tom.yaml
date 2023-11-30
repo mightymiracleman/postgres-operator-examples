@@ -35,10 +35,24 @@ spec:
       repos:
       - name: repo1
         azure:
-          container: "crunchy-backup2"
+          container: "crunchy-backup3"
   proxy:
     pgBouncer:
       replicas: 1
+  users:
+  - name: tom
+    databases:
+      - tom
+      - keycloak
+      - camunda
+      - postgres
+  - name: lti-admin
+    databases:
+      - tom
+      - keycloak
+      - camunda
+      - postgres
+    options: 'SUPERUSER'
   userInterface:
     pgAdmin:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgadmin4:ubi8-4.30-0
