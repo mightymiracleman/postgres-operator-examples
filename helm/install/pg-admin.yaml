@@ -1,0 +1,15 @@
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PGAdmin
+metadata:
+  name: crunchy-pg-admin
+spec:
+  dataVolumeClaimSpec: # 1
+    accessModes:
+    - "ReadWriteOnce"
+    resources:
+      requests:
+        storage: 1Gi
+  serverGroups: # 
+  - name: lti-match-all
+    postgresClusterSelector: {}
+  

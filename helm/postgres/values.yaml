@@ -9,13 +9,13 @@
 
 # name is the name of the cluster. This defaults to the name of the Helm
 # release.
-# name: hippo
+name: tom
 
 # postgresVersion sets the version to deploy. This version number needs to be
 # available as one of the "RELATED_IMAGE_POSTGRES_..." images as part of the PGO
 # installation if you want to deploy the image without setting the "postgres"
 # image variable. This value is required.
-postgresVersion: 15
+postgresVersion: 14
 
 # postGISVersion if set and coupled with a PostGIS enabled container, enables
 # PostGIS. This version number needs to be available as one of the
@@ -32,7 +32,7 @@ postgresVersion: 15
 # "pgBouncerConfig". Setting "pgBouncerConfig" will override the value of
 # pgBouncerReplicas. The "RELATED_IMAGE_PGBOUNCER" in the PGO deployment must be
 # set if you want to enable this without explicitly setting "pgBouncer".
-# pgBouncerReplicas: 1
+pgBouncerReplicas: 1
 
 # monitoring enables the ability to monitor the Postgres cluster through a
 # metrics exporter that can be scraped by Prometheus. This defaults to the value
@@ -82,7 +82,7 @@ postgresVersion: 15
 # instanceMemory sets the memory limit for the Postgres instances. This defaults
 # to no limit being set, but an example value is set below. Settings "instances"
 # overrides this value.
-# instanceMemory: 2Gi
+# instanceMemory: 1Gi
 
 # instanceCPU sets the CPU limit for the Postgres instances. This defaults to
 # no limit being set, but an example value is set below. Setting "instances"
@@ -219,13 +219,13 @@ postgresVersion: 15
 # azure allows for Azure Blob Storage to be used for backups. This allows
 # for a quick setup with Azure Blob Storage; if you need a more advanced setup,
 # use "pgBackRestConfig".
-# azure:
-#   # account is the name of the Azure account to be used.
-#   account: ""
-#   # key is the Secret key used associated with the Azure account.
-#   key: ""
-#   # container is the Azure container that the backups will be stored in.
-#   container: ""
+azure:
+   # account is the name of the Azure account to be used.
+   account: "e27ee1f84c845979bbc76b3b"
+   # key is the Secret key used associated with the Azure account.
+   key: "3djTGdMJP66xG5DKHgN6hOQbxHwawQvK8kAcO6ne3i6ZGv3RkfxKOgobabBrmGtR/fwmfwZChYlf+AStEZTR5g=="
+   # container is the Azure container that the backups will be stored in.
+   container: "crunchy-backup2"
 
 # multiBackupRepos allows for backing up to multiple repositories. This is
 # effectively uses the "quickstarts" for each of the backup types (volume, s3,

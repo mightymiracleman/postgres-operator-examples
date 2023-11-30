@@ -56,3 +56,4 @@ resources:
 # postgres-operator.crunchydata.com, will cause an error
 # customPodLabels:
 #  example.com: custom-label
+
