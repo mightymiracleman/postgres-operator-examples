@@ -1,0 +1,54 @@
+---
+# Source: postgrescluster/templates/pgbackrest-secret.yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: qa1-pgbackrest-secret
+type: Opaque
+data:
+  azure.conf: |-
+        DQpbZ2xvYmFsXQ0KcmVwbzEtYXp1cmUtYWNjb3VudD1lMjdlZTFmODRjODQ1OTc5YmJjNzZiM2INCnJlcG8xLWF6dXJlLWtleT0zZGpUR2RNSlA2NnhHNURLSGdONmhPUWJ4SHdhd1F2SzhrQWNPNm5lM2k2Wkd2M1JrZnhLT2dvYmFiQnJtR3RSL2Z3bWZ3WkNoWWxmK0FTdEVaVFI1Zz09DQo=
+---
+# Source: postgrescluster/templates/postgres.yaml
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PostgresCluster
+metadata:
+  name: qa1
+spec:
+  postgresVersion: 13
+  image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-13.9-0
+  instances:
+    - name: "instance1"
+      replicas: 1
+      dataVolumeClaimSpec:
+        accessModes:
+        - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: "1Gi"
+      resources:
+        limits:
+          memory: "1Gi"
+  backups:
+    pgbackrest:
+      configuration:
+      - secret:
+          name: qa1-pgbackrest-secret
+      global:
+        repo1-path: /pgbackrest/default/qa1/repo1
+      repos:
+      - name: repo1
+        azure:
+          container: "crunchy-backup"
+  proxy:
+    pgBouncer:
+      replicas: 1
+  userInterface:
+    pgAdmin:
+      image: registry.developers.crunchydata.com/crunchydata/crunchy-pgadmin4:ubi8-4.30-0
+      dataVolumeClaimSpec:
+        accessModes:
+        - "ReadWriteOnce"
+        resources:
+          requests:
+            storage: 1Gi
