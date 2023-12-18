@@ -31,6 +31,9 @@ spec:
           memory: "1Gi"
   backups:
     pgbackrest:
+      metadata:
+        labels:
+          sidecar.istio.io/inject: 'false'
       configuration:
       - secret:
           name: qa1-pgbackrest-secret
@@ -43,6 +46,28 @@ spec:
   proxy:
     pgBouncer:
       replicas: 1
+      config:
+        global:
+           query_wait_timeout: "240" 
+           default_pool_size: "100"
+           max_client_conn: "1000" #change depending on your app requirement  
+           # I could not get the "datbases:" setting to work at all.  I have no idea what is wrong with it.
+           # https://access.crunchydata.com/documentation/postgres-operator/5.0.0/tutorial/connection-pooling/
+           # https://www.pgbouncer.org/config.html
+  users:
+  - name: lti-qa1  # this user is allowed through pg-bouncer
+    databases:
+      - tom
+      #- keycloak
+      #- camunda
+      #- postgres
+  - name: lti-admin  # not allowed through pg-bouncer (SUPER USER)
+    databases:
+      - tom
+      #- keycloak
+      #- camunda
+      #- postgres
+    options: 'SUPERUSER'
   userInterface:
     pgAdmin:
       image: registry.developers.crunchydata.com/crunchydata/crunchy-pgadmin4:ubi8-4.30-0
