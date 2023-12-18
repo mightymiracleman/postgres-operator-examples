@@ -225,7 +225,7 @@ azure:
    # key is the Secret key used associated with the Azure account.
    key: "3djTGdMJP66xG5DKHgN6hOQbxHwawQvK8kAcO6ne3i6ZGv3RkfxKOgobabBrmGtR/fwmfwZChYlf+AStEZTR5g=="
    # container is the Azure container that the backups will be stored in.
-   container: "crunchy-backup2"
+   container: "crunchy-backup3"
 
 # multiBackupRepos allows for backing up to multiple repositories. This is
 # effectively uses the "quickstarts" for each of the backup types (volume, s3,

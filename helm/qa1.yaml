@@ -7,7 +7,7 @@ metadata:
 type: Opaque
 data:
   azure.conf: |-
-        DQpbZ2xvYmFsXQ0KcmVwbzEtYXp1cmUtYWNjb3VudD1lMjdlZTFmODRjODQ1OTc5YmJjNzZiM2INCnJlcG8xLWF6dXJlLWtleT0zZGpUR2RNSlA2NnhHNURLSGdONmhPUWJ4SHdhd1F2SzhrQWNPNm5lM2k2Wkd2M1JrZnhLT2dvYmFiQnJtR3RSL2Z3bWZ3WkNoWWxmK0FTdEVaVFI1Zz09DQo=
+        CltnbG9iYWxdCnJlcG8xLWF6dXJlLWFjY291bnQ9MzI0MGZmMzczZGZlNWJmMTkwNzcwNTQxCnJlcG8xLWF6dXJlLWtleT10NjB3SzJtbk8rc3dtMTdVZFVVNEQzbklhZEpsY0s1TFdOejlOU2o3S2t0dmNzNmFXMXJXRmNjdXhwU1hSNW9pTkpDOWpXeU0vZmJ3K0FTdFQ4UmhDdz09
 ---
 # Source: postgrescluster/templates/postgres.yaml
 apiVersion: postgres-operator.crunchydata.com/v1beta1
