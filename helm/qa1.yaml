@@ -43,6 +43,10 @@ spec:
       - name: repo1
         azure:
           container: "crunchy-backup"
+      manual:
+        repoName: repo1
+        options:
+         - --type=full
   proxy:
     pgBouncer:
       replicas: 1
