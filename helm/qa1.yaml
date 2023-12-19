@@ -57,13 +57,13 @@ spec:
   users:
   - name: lti-qa1  # this user is allowed through pg-bouncer
     databases:
-      - tom
+      - qa1
       #- keycloak
       #- camunda
       #- postgres
   - name: lti-admin  # not allowed through pg-bouncer (SUPER USER)
     databases:
-      - tom
+      - qa1
       #- keycloak
       #- camunda
       #- postgres
