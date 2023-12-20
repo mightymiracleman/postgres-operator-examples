@@ -15,8 +15,13 @@ kind: PostgresCluster
 metadata:
   name: qa3
 spec:
-  postgresVersion: 13
-  image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-13.9-0
+  shutdown: false
+  #postgresVersion: 13
+  #image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-13.9-0
+  postgresVersion: 14
+  image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-14.9-1
+  #postgresVersion: 15
+  #image: registry.developers.crunchydata.com/crunchydata/crunchy-postgres:ubi8-15.4-1
   instances:
     - name: "instance1"
       replicas: 1
@@ -42,7 +47,7 @@ spec:
       repos:
       - name: repo1
         azure:
-          container: "crunchy-backup"
+          container: "crunchy-ben"
       manual:
         repoName: repo1
         options:

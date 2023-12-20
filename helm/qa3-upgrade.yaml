@@ -1,0 +1,14 @@
+apiVersion: postgres-operator.crunchydata.com/v1beta1
+kind: PGUpgrade
+metadata:
+  name: qa3-upgrade
+spec:
+  metadata:
+    annotations:
+      sidecar.istio.io/inject: 'false'
+  image: registry.developers.crunchydata.com/crunchydata/crunchy-upgrade:ubi8-5.4.3-0
+  postgresClusterName: qa3
+  fromPostgresVersion: 13
+  toPostgresVersion: 14
+  #fromPostgresVersion: 14
+  #toPostgresVersion: 15
